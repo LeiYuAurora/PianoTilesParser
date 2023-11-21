@@ -344,7 +344,7 @@ function parse(text) {
           const duration = RegExp.$2.split('').reduce((p, v) => p + noteData[v] * (60 / bpm), 0)
           const note = RegExp.$1.replace(/^\((.+)\)$/, '$1')
           const __note = note.split('~')
-          __note.forEach((m, n, a) => m.split('@').forEach((p, q, r) => _notes[i].push([p.split('.').map(v => restData[v] ? 'mute' : v.replace('#', '_')), r.length === q + 1 ? (duration / a.length) * (1 - q / 32) : (duration / a.length) / 32])))
+          __note.forEach((m, n, a) => m.split('@').forEach((p, q, r) => _notes[i].push([p.split('.').map(v => restData[v] ? 'mute' : v.replace('#', 'u')), r.length === q + 1 ? (duration / a.length) * (1 - q / 32) : (duration / a.length) / 32])))
         } else if (restReg.test(_note)) {
           _notes[i].push([['mute'], _note.split('').reduce((p, v) => p + restData[v] * (60 / bpm), 0)])
         } else {
